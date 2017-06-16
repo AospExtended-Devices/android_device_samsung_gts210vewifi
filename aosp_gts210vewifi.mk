@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,9 +21,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from gts210vewifi device
 $(call inherit-product, device/samsung/gts210vewifi/device.mk)
 
-# Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := gts210vewifi
-PRODUCT_NAME := full_gts210vewifi
+# Inherit some common AEX stuff.
+$(call inherit-product, vendor/aosp/common.mk)
+
+PRODUCT_NAME := aosp_gts210vewifi
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := gts210vewifi
 PRODUCT_MANUFACTURER := samsung
+PRODUCT_DEVICE := gts210vewifi
+PRODUCT_MODEL := SM-T813
+
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+
+# Use the latest approved GMS identifiers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=gts210vewifixx \
+    BUILD_FINGERPRINT=samsung/gts210vewifixx/gts210vewifi:7.0/NRD90M/T813XXU2BQD3:user/release-keys \
+    PRIVATE_BUILD_DESC="gts210vewifixx-user 7.0 NRD90M T813XXU2BQD3 release-keys"
